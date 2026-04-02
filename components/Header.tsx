@@ -31,11 +31,13 @@ export default function Header() {
         </button>
       </div>
 
+      {/* USD Button Hidden for Now 
       <div className="pointer-events-auto pt-2">
         <button className="text-white text-xs tracking-widest hover:text-white/70 transition-colors uppercase mix-blend-difference font-semibold">
           [ $USD ]
         </button>
       </div>
+      */}
 
       {isCartOpen && <Cart onClose={() => setIsCartOpen(false)} />}
     </header>

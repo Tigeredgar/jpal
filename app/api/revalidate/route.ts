@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 
 export async function POST(req: NextRequest) {

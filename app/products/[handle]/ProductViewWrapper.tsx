@@ -100,7 +100,7 @@ export default function ProductViewWrapper({ product }: { product: any }) {
       ))}
       
       <div className="text-[10px] text-white/40 mb-4 uppercase tracking-widest border-b border-white/10 pb-4 text-center">
-        Begins Shipping 2/17
+        Begins Shipping June 1st
       </div>
     </>
   );
@@ -149,6 +149,16 @@ export default function ProductViewWrapper({ product }: { product: any }) {
         <motion.div 
            layout
            initial={false}
+           drag="y"
+           dragConstraints={{ top: 0, bottom: 0 }}
+           dragElastic={0.2}
+           onDragEnd={(e, { offset, velocity }) => {
+              if (offset.y < -50 || velocity.y < -300) {
+                 setIsSheetOpen(true);
+              } else if (offset.y > 50 || velocity.y > 300) {
+                 setIsSheetOpen(false);
+              }
+           }}
            className="w-full bg-white/5 backdrop-blur-[30px] border border-white/20 rounded-[20px] overflow-hidden text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] relative pointer-events-auto"
            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
         >

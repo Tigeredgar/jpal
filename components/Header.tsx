@@ -10,7 +10,7 @@ export default function Header() {
   const totalItems = cartItems.reduce((acc, item) => acc + item.qty, 0);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 p-4 sm:p-6 flex justify-between items-start pointer-events-none relative">
+    <header className="fixed top-0 left-0 right-0 z-50 p-4 sm:p-6 flex justify-between items-start pointer-events-none">
       <div className="flex gap-2 pointer-events-auto items-center">
         <Link 
           href="/" 

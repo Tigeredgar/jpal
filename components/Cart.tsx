@@ -37,8 +37,15 @@ export default function Cart({ onClose }: CartProps) {
   };
 
   return (
-    <div className="absolute top-16 right-[-20%] sm:right-0 w-[90vw] sm:w-80 bg-[#e3e6e3]/95 backdrop-blur-3xl rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] border border-white/40 overflow-hidden font-sans text-gray-800 z-50 pointer-events-auto origin-top-right flex flex-col max-h-[80vh]">
+    <>
+      {/* Backdrop overlay */}
+      <div 
+        className="fixed inset-0 bg-black/30 backdrop-blur-md pointer-events-auto z-40 transition-opacity" 
+        onClick={onClose} 
+      />
       
+      {/* Centered Cart Container */}
+      <div className="fixed top-6 left-4 right-4 sm:left-auto sm:right-6 sm:w-[24rem] sm:max-h-[85vh] bg-[#e3e6e3]/95 backdrop-blur-3xl rounded-[24px] shadow-[0_20px_60px_rgba(0,0,0,0.5)] border border-white/40 font-sans text-gray-800 z-50 pointer-events-auto flex flex-col overflow-hidden max-h-[90vh]">
       <div className="flex justify-between items-center p-4 border-b border-black/10 shrink-0">
         <h2 className="font-bold text-lg text-[#5a6b7c]">Cart</h2>
         <button onClick={onClose} className="text-[#5a6b7c] hover:text-black transition-colors">
@@ -74,7 +81,7 @@ export default function Cart({ onClose }: CartProps) {
                   <span className="flex items-center">{item.variant.name} <span className="inline-block w-[6px] h-[6px] border border-black/10 rounded-full ml-1" style={{ backgroundColor: item.variant.hex || (item.variant.colorClass && item.product.type === 'case' ? item.variant.colorClass.replace('bg-[', '').replace(']', '') : '#111') }} /></span>
                   <span>SIZE: {item.size}</span>
                 </div>
-                <div className="text-[#9aa4b0] mb-4 text-[10px] font-mono tracking-tighter">Begins Shipping 2/17</div>
+                <div className="text-[#9aa4b0] mb-4 text-[10px] font-mono tracking-tighter">Begins Shipping June 1st</div>
                 
                 <div className="flex justify-between items-center text-[#7d8b99] font-mono text-[10px]">
                   <span className="flex items-center gap-1">
@@ -119,5 +126,6 @@ export default function Cart({ onClose }: CartProps) {
         <div className="w-3 h-2 bg-black rounded-full -skew-x-12 ml-1" />
       </div>
     </div>
+    </>
   );
 }

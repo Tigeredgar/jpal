@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     // Strictly speaking, we should verify the HMAC here using SHOPIFY_WEBHOOK_SECRET
     // const hmac = req.headers.get("x-shopify-hmac-sha256");
 
-    revalidateTag("products");
+    revalidateTag("products", "max");
 
     return NextResponse.json({ revalidated: true, now: Date.now() });
   } catch (err) {

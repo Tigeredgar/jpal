@@ -6,7 +6,7 @@ import ProductMock from "./ProductMock";
 
 export default function Gallery({ products }: { products: any[] }) {
   return (
-    <>
+    <div className="flex flex-col items-center justify-center min-h-[100vh] pt-32 md:pt-0 md:block w-full pb-32">
       {products.map((product, idx) => {
         const yBounce = [0, -20 - (idx * 5), 0];
         const duration = 5 + (idx % 3);
@@ -14,18 +14,18 @@ export default function Gallery({ products }: { products: any[] }) {
         return (
           <div 
             key={product.id}
-            className="absolute cursor-pointer group"
-            style={{ top: product.pos.top, left: product.pos.left }}
+            className="relative md:absolute cursor-pointer group mb-20 md:mb-0 md:[top:var(--top)] md:[left:var(--left)]"
+            style={{ '--top': product.pos.top, '--left': product.pos.left } as React.CSSProperties}
           >
             <Link href={`/products/${product.handle}`}>
               <motion.div 
                 animate={{ y: yBounce }}
                 transition={{ duration, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-28 sm:w-36 lg:w-44 aspect-[1/2.1] hover:scale-110 hover:-rotate-6 transition-all duration-300 pointer-events-auto"
+                className="relative w-48 sm:w-56 md:w-36 lg:w-44 aspect-[1/2.1] hover:scale-110 hover:-rotate-6 transition-all duration-300 pointer-events-auto"
               >
                 <div className="w-full h-full">
                   {product.imageUrl ? (
-                     <img src={product.imageUrl} alt={product.title} className="w-full h-full object-cover rounded-2xl drop-shadow-2xl" />
+                     <img src={product.imageUrl} alt={product.title} className="w-full h-full object-cover rounded-2xl drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]" />
                   ) : (
                      <ProductMock product={product} />
                   )}
@@ -38,6 +38,6 @@ export default function Gallery({ products }: { products: any[] }) {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }
